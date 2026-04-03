@@ -11,7 +11,7 @@ Claudex is a fork of the Claude Code source that adds a full OpenAI-compatible p
 ## Install
 
 ```bash
-npm install -g @letchupkt/claudex
+npm install -g @letchu_pkt/claudex
 ```
 
 ```bash

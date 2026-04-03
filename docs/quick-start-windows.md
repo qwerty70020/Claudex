@@ -20,7 +20,7 @@ npm --version
 ## 2. Install Claudex
 
 ```powershell
-npm install -g @letchupkt/claudex
+npm install -g @letchu_pkt/claudex
 ```
 
 Verify:
@@ -168,13 +168,13 @@ ollama serve
 ## 6. Update Claudex
 
 ```powershell
-npm install -g @letchupkt/claudex@latest
+npm install -g @letchu_pkt/claudex@latest
 ```
 
 ## 7. Uninstall
 
 ```powershell
-npm uninstall -g @letchupkt/claudex
+npm uninstall -g @letchu_pkt/claudex
 ```
 
 ---

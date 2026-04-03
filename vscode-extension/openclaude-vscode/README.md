@@ -1,7 +1,7 @@
 # Claudex for VS Code
 
-[![Version](https://img.shields.io/visual-studio-marketplace/v/letchupkt.claudex-vscode)](https://marketplace.visualstudio.com/items?itemName=letchupkt.claudex-vscode)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/letchupkt.claudex-vscode)](https://marketplace.visualstudio.com/items?itemName=letchupkt.claudex-vscode)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/letchu_pkt.claudex-vscode)](https://marketplace.visualstudio.com/items?itemName=letchu_pkt.claudex-vscode)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/letchu_pkt.claudex-vscode)](https://marketplace.visualstudio.com/items?itemName=letchu_pkt.claudex-vscode)
 
 A sleek VS Code companion for [Claudex](https://github.com/l3tchupkt/claudex) with a visual **Control Center** and terminal-first workflows.
 
@@ -16,7 +16,7 @@ A sleek VS Code companion for [Claudex](https://github.com/l3tchupkt/claudex) wi
 ## Requirements
 
 - VS Code `1.95+`
-- `claudex` CLI in your PATH: `npm install -g @letchupkt/claudex`
+- `claudex` CLI in your PATH: `npm install -g @letchu_pkt/claudex`
 
 ## Commands
 

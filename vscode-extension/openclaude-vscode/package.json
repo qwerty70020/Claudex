@@ -3,7 +3,7 @@
   "displayName": "Claudex",
   "description": "Sleek VS Code extension for Claudex with a visual Control Center and terminal-aligned theme.",
   "version": "0.1.1",
-  "publisher": "letchupkt",
+  "publisher": "letchu_pkt",
   "engines": {
     "vscode": "^1.95.0"
   },
@@ -99,6 +99,6 @@
     "type": "git",
     "url": "https://github.com/l3tchupkt/claudex"
   },
-  "author": "Lakshmikanthan K (letchupkt)",
+  "author": "Lakshmikanthan K (letchu_pkt)",
   "license": "MIT"
 }

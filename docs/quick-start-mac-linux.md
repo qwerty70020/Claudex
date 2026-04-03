@@ -28,7 +28,7 @@ npm --version
 ## 2. Install Claudex
 
 ```bash
-npm install -g @letchupkt/claudex
+npm install -g @letchu_pkt/claudex
 ```
 
 Verify:
@@ -188,13 +188,13 @@ ollama serve
 ## 6. Update Claudex
 
 ```bash
-npm install -g @letchupkt/claudex@latest
+npm install -g @letchu_pkt/claudex@latest
 ```
 
 ## 7. Uninstall
 
 ```bash
-npm uninstall -g @letchupkt/claudex
+npm uninstall -g @letchu_pkt/claudex
 ```
 
 ---

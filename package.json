@@ -1,6 +1,7 @@
 {
-  "name": "@letchupkt/claudex",
+  "name": "@letchu_pkt/claudex",
   "version": "1.0.0",
+  "publisher": "letchu_pkt",
   "description": "Claude Code opened to any LLM — OpenAI, Gemini, DeepSeek, Ollama, and 200+ models",
   "type": "module",
   "bin": {

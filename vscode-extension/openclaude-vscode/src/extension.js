@@ -38,7 +38,7 @@ async function launchClaudex() {
 
   if (!installed) {
     const action = await vscode.window.showErrorMessage(
-      `Claudex command not found: ${executable}. Install it with: npm install -g @letchupkt/claudex`,
+      `Claudex command not found: ${executable}. Install it with: npm install -g @letchu_pkt/claudex`,
       'Open Repository'
     );
 

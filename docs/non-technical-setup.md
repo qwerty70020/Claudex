@@ -33,7 +33,7 @@ You need:
 ## Step 1 — Install Claudex
 
 ```bash
-npm install -g @letchupkt/claudex
+npm install -g @letchu_pkt/claudex
 ```
 
 Verify:

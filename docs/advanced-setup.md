@@ -9,7 +9,7 @@ Source builds, provider profiles, diagnostics, smart routing, Telegram gateway, 
 ### npm (recommended)
 
 ```bash
-npm install -g @letchupkt/claudex
+npm install -g @letchu_pkt/claudex
 ```
 
 ### From source with Bun
