@@ -99,15 +99,16 @@ export async function findSuitableShell(): Promise<string> {
   // Try to locate shells using which (uses Bun.which when available)
   const [zshPath, bashPath] = await Promise.all([which('zsh'), which('bash')])
 
-  // Populate shell paths from which results and fallback locations
-  // Include $PREFIX/bin for Termux (Android) where shells live under the Termux prefix
-  const shellPaths = [
-    '/bin',
-    '/usr/bin',
-    '/usr/local/bin',
-    '/opt/homebrew/bin',
-    ...(process.env.PREFIX ? [`${process.env.PREFIX}/bin`] : []),
-  ]
+  // Populate shell paths from which results and fallback locations.
+  // On Termux (Android), $PREFIX/bin is the only real location — put it first.
+  const shellPaths = process.env.PREFIX
+    ? [
+        `${process.env.PREFIX}/bin`,
+        '/bin',
+        '/usr/bin',
+        '/usr/local/bin',
+      ]
+    : ['/bin', '/usr/bin', '/usr/local/bin', '/opt/homebrew/bin']
 
   // Order shells based on user preference
   const shellOrder = preferBash ? ['bash', 'zsh'] : ['zsh', 'bash']
@@ -261,8 +262,12 @@ export async function exec(
   //   • pass /bin/sh as the sandbox's inner shell to exec that invocation
   //   • outer spawn is also /bin/sh -c to parse the runtime's POSIX output
   // /bin/sh exists on every platform where sandbox is supported.
+  // On Termux (Android), sh lives under $PREFIX/bin instead of /bin.
+  const POSIX_SH = process.env.PREFIX
+    ? `${process.env.PREFIX}/bin/sh`
+    : '/bin/sh'
   const isSandboxedPowerShell = shouldUseSandbox && shellType === 'powershell'
-  const sandboxBinShell = isSandboxedPowerShell ? '/bin/sh' : binShell
+  const sandboxBinShell = isSandboxedPowerShell ? POSIX_SH : binShell
 
   if (shouldUseSandbox) {
     commandString = await SandboxManager.wrapWithSandbox(
@@ -280,7 +285,7 @@ export async function exec(
     }
   }
 
-  const spawnBinary = isSandboxedPowerShell ? '/bin/sh' : binShell
+  const spawnBinary = isSandboxedPowerShell ? POSIX_SH : binShell
   const shellArgs = isSandboxedPowerShell
     ? ['-c', commandString]
     : provider.getSpawnArgs(commandString)

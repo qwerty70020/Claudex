@@ -29,7 +29,9 @@ import { isENOENT } from '../utils/errors.js'
 import { startUpstreamProxyRelay } from './relay.js'
 
 export const SESSION_TOKEN_PATH = '/run/ccr/session_token'
-const SYSTEM_CA_BUNDLE = '/etc/ssl/certs/ca-certificates.crt'
+const SYSTEM_CA_BUNDLE = process.env.PREFIX
+  ? `${process.env.PREFIX}/etc/ssl/certs/ca-certificates.crt`
+  : '/etc/ssl/certs/ca-certificates.crt'
 
 // Hosts the proxy must NOT intercept. Covers loopback, RFC1918, the IMDS
 // range, and the package registries + GitHub that CCR containers already

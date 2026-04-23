@@ -31,9 +31,12 @@ type RipgrepConfig = {
 type RipgrepErrorLike = Pick<NodeJS.ErrnoException, 'code' | 'message'>
 
 const getRipgrepConfig = memoize((): RipgrepConfig => {
-  const userWantsSystemRipgrep = isEnvDefinedFalsy(
-    process.env.USE_BUILTIN_RIPGREP,
-  )
+  // Auto-detect Termux (Android) via $PREFIX — vendor ripgrep (glibc) is
+  // incompatible with Android bionic libc and hangs indefinitely.
+  const isTermux = !!process.env.PREFIX && process.platform === 'linux'
+
+  const userWantsSystemRipgrep =
+    isTermux || isEnvDefinedFalsy(process.env.USE_BUILTIN_RIPGREP)
 
   // Try system ripgrep if user wants it
   if (userWantsSystemRipgrep) {
