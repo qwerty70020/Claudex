@@ -100,7 +100,14 @@ export async function findSuitableShell(): Promise<string> {
   const [zshPath, bashPath] = await Promise.all([which('zsh'), which('bash')])
 
   // Populate shell paths from which results and fallback locations
-  const shellPaths = ['/bin', '/usr/bin', '/usr/local/bin', '/opt/homebrew/bin']
+  // Include $PREFIX/bin for Termux (Android) where shells live under the Termux prefix
+  const shellPaths = [
+    '/bin',
+    '/usr/bin',
+    '/usr/local/bin',
+    '/opt/homebrew/bin',
+    ...(process.env.PREFIX ? [`${process.env.PREFIX}/bin`] : []),
+  ]
 
   // Order shells based on user preference
   const shellOrder = preferBash ? ['bash', 'zsh'] : ['zsh', 'bash']
