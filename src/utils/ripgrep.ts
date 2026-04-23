@@ -37,13 +37,13 @@ const getRipgrepConfig = memoize((): RipgrepConfig => {
 
   // Try system ripgrep if user wants it
   if (userWantsSystemRipgrep) {
-    const { cmd: systemPath } = findExecutable('rg', [])
-    if (systemPath !== 'rg') {
-      // SECURITY: Use command name 'rg' instead of systemPath to prevent PATH hijacking
-      // If we used systemPath, a malicious ./rg.exe in current directory could be executed
-      // Using just 'rg' lets the OS resolve it safely with NoDefaultCurrentDirectoryInExePath protection
-      return { mode: 'system', command: 'rg', args: [] }
-    }
+    // SECURITY: Use command name 'rg' instead of systemPath to prevent PATH hijacking
+    // If we used systemPath, a malicious ./rg.exe in current directory could be executed
+    // Using just 'rg' lets the OS resolve it safely with NoDefaultCurrentDirectoryInExePath protection
+    //
+    // When USE_BUILTIN_RIPGREP=0, always use system rg — never fall through to vendor
+    // binaries which may be incompatible with the current platform (e.g. Termux/Android).
+    return { mode: 'system', command: 'rg', args: [] }
   }
 
   // In bundled (native) mode, ripgrep is statically compiled into bun-internal
