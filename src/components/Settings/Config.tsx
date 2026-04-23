@@ -1577,6 +1577,7 @@ export function Config({
         </Box>}
     </Box>;
 }
+function getSubagentModelLabel(value: string | null): string {
   if (value === null) return "Default (leader's model)";
   return modelDisplayString(value);
 }
