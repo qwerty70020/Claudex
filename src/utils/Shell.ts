@@ -1,4 +1,5 @@
 import { execFileSync, spawn } from 'child_process'
+import { tmpdir } from 'os'
 import { constants as fsConstants, readFileSync, unlinkSync } from 'fs'
 import { type FileHandle, mkdir, open, realpath } from 'fs/promises'
 import memoize from 'lodash-es/memoize.js'
@@ -202,7 +203,7 @@ export async function exec(
 
   // Sandbox temp directory - use per-user directory name to prevent multi-user permission conflicts
   const sandboxTmpDir = posixJoin(
-    process.env.CLAUDE_CODE_TMPDIR || '/tmp',
+    process.env.CLAUDE_CODE_TMPDIR || tmpdir(),
     getClaudeTempDirName(),
   )
 
