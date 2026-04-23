@@ -23,6 +23,7 @@
  * user's TMUX in all child processes spawned by Shell.ts.
  */
 
+import { tmpdir } from 'os'
 import { posix } from 'path'
 import { registerCleanup } from './cleanupRegistry.js'
 import { logForDebugging } from './debug.js'
@@ -378,7 +379,7 @@ async function doInitialize(): Promise<void> {
   // On Windows this path is inside WSL, so always use POSIX separators.
   // process.getuid() is undefined on Windows; WSL default user is root (uid 0) in CI.
   const uid = process.getuid?.() ?? 0
-  const baseTmpDir = process.env.TMPDIR || '/tmp'
+  const baseTmpDir = process.env.TMPDIR || tmpdir()
   const fallbackPath = posix.join(baseTmpDir, `tmux-${uid}`, socket)
 
   // Get server PID separately
